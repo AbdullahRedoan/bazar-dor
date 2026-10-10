@@ -1,6 +1,7 @@
 import React from "react";
 import { IProduct } from "../types/types";
 import { FiTriangle } from "react-icons/fi";
+import { TbTriangleInverted } from "react-icons/tb";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const formatUnit = (unit: string) => {
@@ -43,13 +44,13 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 
         {
             isUp? 
-            <div className="flex items-center gap-1 bg-[#f3f6f3] text-[#d9383a] px-2.5 py-1 rounded-full text-xs font-bold">
+            <div className="flex items-center gap-1 bg-[#f0f0f0] text-[#d9383a] px-2.5 py-1 rounded-full text-xs font-bold">
           <FiTriangle className="w-2.5 h-2.5 fill-current" />
           <span>{product?.change.pct.toLocaleString('bn-BN')}%</span>
         </div>
         :
-        <div className="flex items-center gap-1 bg-[#f3f6f3] text-[#38d956] px-2.5 py-1 rounded-full text-xs font-bold">
-          <FiTriangle className="w-2.5 h-2.5 fill-current" />
+        <div className="flex items-center gap-1 bg-[#f0f0f0] text-success px-2.5 py-1 rounded-full text-xs font-bold">
+          <TbTriangleInverted className="w-2.5 h-2.5 fill-current" />
           <span>{product?.change.pct.toLocaleString('bn-BN')}%</span>
         </div>
         }

@@ -1,5 +1,6 @@
 import ProductCard from "./components/ProductCard";
 import Banner from "./components/shared/home/Banner";
+import FallenProducts from "./components/shared/home/FallenProducts";
 import RisenProducts from "./components/shared/home/RisenProducts";
 
 async function Home() {
@@ -15,6 +16,7 @@ async function Home() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-12">
         <Banner></Banner>
         <RisenProducts products={products}></RisenProducts>
+        <FallenProducts products={products}></FallenProducts>
       </main>
     </div>
   );

@@ -8,13 +8,6 @@ const RisenProducts = ({products} : {products : IProduct[]}) => {
     .sort((a, b) => b?.change.pct - a?.change.pct)
     .slice(0, 6);
 
-//   const fallers = products
-//     .filter(
-//       (p) => p.priceChangeDirection === "down" || p.priceChangePercent < 0,
-//     )
-//     .sort((a, b) => a.priceChangePercent - b.priceChangePercent)
-//     .slice(0, 6);
-
   return (
     <div>
         <h2 className="flex gap-2 items-center text-xl font-bold my-5"><FiTriangle className="w-4 h-4 text-[#d9383a] fill-[#d9383a]"/>আজ দাম বেড়েছে</h2>
