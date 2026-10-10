@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Categories></Categories>
         {children}
         <Footer></Footer>
-        </body>
+      </body>
     </html>
   );
 }

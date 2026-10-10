@@ -1,5 +1,4 @@
 import { FiShoppingCart } from 'react-icons/fi';
-import Categories from './Categories';
 const Navbar = () => {
     return (
         <header className="w-full bg-[#f6f8f6] border-b border-gray-200/60 py-3.5 px-6 sm:px-10">
@@ -37,7 +36,8 @@ const Navbar = () => {
         </div>
 
       </div>
-      
+      <div>
+      </div>
     </header>
     );
 };
