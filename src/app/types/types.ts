@@ -29,5 +29,5 @@ export interface IProduct {
     dir: "up" | "down";
     pct: number;
   };
-  market: IMarket[];
+  markets: IMarket[];
 }
