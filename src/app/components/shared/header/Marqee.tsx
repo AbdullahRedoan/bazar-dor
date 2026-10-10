@@ -15,21 +15,11 @@ const Marqee = async () => {
     return unit;
   };
 
-  const toBengaliNumber = (num: number | string) => {
-    const bengaliDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-    return num
-      .toString()
-      .replace(/\d/g, (digit) => bengaliDigits[parseInt(digit, 10)]);
-  };
-
   return (
     <div className="w-full bg-[#f6f8f6] border-y border-gray-200/60 py-1 px-4">
       <MarqueeText direction="right" duration={18} className="max-w-full mx-auto flex gap-5 items-center justify-start divide-x divide-gray-200 overflow-x-auto">
         {products.map((product: IProduct) => {
           const isUp = product.change.dir === "up";
-          const absolutePct = Math.abs(product.change.pct);
-          const formattedPct = toBengaliNumber(absolutePct.toFixed(1));
-          const formattedPrice = toBengaliNumber(product.today);
 
           return (
             <div
@@ -45,7 +35,7 @@ const Marqee = async () => {
               <div className="flex items-center gap-1.5 text-xs font-bold text-gray-800">
                 <span>{product.nameBn}</span>
                 <span className="font-semibold text-gray-700">
-                  {formattedPrice} টাকা/{formatUnit(product.unit)}
+                  {product.today.toLocaleString('bn-BD')} টাকা/{formatUnit(product.unit)}
                 </span>
               </div>
 
@@ -60,7 +50,7 @@ const Marqee = async () => {
                     isUp ? "rotate-0" : "rotate-180"
                   }`}
                 />
-                <span>{formattedPct}%</span>
+                <span>{product?.change.pct.toLocaleString('bn-BD')}%</span>
               </div>
             </div>
           );
