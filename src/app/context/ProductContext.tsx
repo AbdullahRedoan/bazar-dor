@@ -1,6 +1,6 @@
 "use client";
 import { IProduct } from '@/app/types/types';
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 
 
 interface IProductContext {
