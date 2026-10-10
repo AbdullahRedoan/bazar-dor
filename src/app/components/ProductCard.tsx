@@ -18,7 +18,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
     <div className="w-full max-w-sm bg-[#f8faf8] border border-gray-100 rounded-3xl p-5 shadow-sm">
       <div className="flex items-center gap-3.5">
         <div className="w-12 h-12 rounded-2xl bg-gray-100/80 flex items-center justify-center text-2xl shrink-0">
-          🧅
+          {product?.image}
         </div>
 
         <div className="flex flex-col">
