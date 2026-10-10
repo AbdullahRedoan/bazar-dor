@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/shared/header/Navbar";
 import Footer from "./components/shared/footer";
 import Categories from "./components/shared/header/Categories";
+import Marqee from "./components/shared/header/Marqee";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Navbar></Navbar>
         <Categories></Categories>
+        <Marqee></Marqee>
         {children}
         <Footer></Footer>
       </body>
