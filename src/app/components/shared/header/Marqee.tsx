@@ -43,7 +43,6 @@ const Marqee = async () => {
                   </span>
                 </div>
 
-                {/* Dynamic Percentage Badge (Up = Red, Down = Green) */}
                 <div
                   className={`flex items-center gap-1 text-xs font-bold ${
                     isUp ? "text-red-500" : "text-emerald-600"

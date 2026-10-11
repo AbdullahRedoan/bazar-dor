@@ -1,4 +1,3 @@
-import ProductCard from "./ProductCard";
 import { IProduct } from "../types/types";
 import CategoryProducts from "./CategoryProducts";
 

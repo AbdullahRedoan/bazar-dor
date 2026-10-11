@@ -21,14 +21,14 @@ const UserInfo = () => {
       {user ? (
         <div className="flex items-center gap-3">
           <div>
-            <div className="dropdown dropdown-bottom">
+            <div className="dropdown dropdown-end md:dropdown-bottom">
               <div
                 tabIndex={0}
                 role="button"
                 className="flex items-center gap-2.5 p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
               >
                 {user?.image ? (
-                  <div className="relative w-10 h-10 rounded-2xl overflow-hidden bg-gray-200">
+                  <div className="relative w-7 h-7 md:w-10 md:h-10 rounded-2xl overflow-hidden bg-gray-200">
                     <Image
                       src={user?.image || ""}
                       alt={user?.name}
@@ -38,15 +38,17 @@ const UserInfo = () => {
                   </div>
                 ) : (
                   <div className="avatar avatar-online avatar-placeholder">
-                    <div className="bg-neutral text-neutral-content w-10  rounded-full">
+                    <div className="bg-neutral text-neutral-content w-5 md:w-10  rounded-full">
                       <span className="text-sm">{user?.name[0]}</span>
                     </div>
                   </div>
                 )}
-                <span className="text-base font-semibold text-gray-900">
+                <div className="hidden md:flex items-center gap-2">
+                  <span className="text-base font-semibold text-gray-900">
                   {user?.name}
                 </span>
                 <HiChevronDown className="w-4 h-4 text-gray-600" />
+                </div>
               </div>
 
               <div
@@ -91,13 +93,13 @@ const UserInfo = () => {
       ) : (
         <div className="flex items-center gap-4">
           <Link href={"/signIn"}>
-            <button className="cursor-pointer  text-sm font-semibold text-gray-800 hover:text-emerald-700 transition-colors px-2 py-1">
+            <button className="cursor-pointer  md:text-sm text-xs md:font-semibold text-gray-800 hover:text-emerald-700 transition-colors md:px-2 py-1">
               সাইন ইন
             </button>
           </Link>
 
           <Link href={"/signUp"}>
-            <button className="cursor-pointer bg-[#008a45] hover:bg-[#00783c] text-white text-sm font-medium px-5 py-2.5 rounded-xl shadow-md transition-all">
+            <button className="cursor-pointer bg-[#008a45] btn-xs md:btn-md hover:bg-[#00783c] text-white text-xs font-medium md:px-5 px-1 md:py-2.5 rounded-xl shadow-md transition-all">
               সাইন আপ
             </button>
           </Link>

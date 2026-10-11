@@ -27,7 +27,7 @@ const CategoryProducts = ({ products }: { products: IProduct[] }) => {
             <select
               onChange={(e) => setSortBy(e.target.value)}
               defaultValue="Pick a color"
-              className="select w-1/12 rounded-xl"
+              className="select w-1/3 md:w-1/12 rounded-xl"
             >
               <option value={"default"}>ডিফল্ট</option>
               <option value={"asc"}>দাম: কম থেকে বেশি</option>
@@ -36,7 +36,7 @@ const CategoryProducts = ({ products }: { products: IProduct[] }) => {
           </span>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-2">
         {sortedProducts?.map((product) => (
           <ProductCard key={product?.id} product={product}></ProductCard>
         ))}
