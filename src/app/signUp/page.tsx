@@ -1,6 +1,29 @@
-import React from "react";
+'use client'
+
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
+
+  const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const user = Object.fromEntries(formData.entries()) as {name:string, email:string, image:string, password:string}
+
+    const { data, error } = await authClient.signUp.email({
+        ...user,
+      callbackURL: '/signIn'
+    })
+    if(data){
+      console.log(data)
+      redirect('/signIn')
+    }
+    if(error){
+      console.log(error)
+    }
+
+  }
+
   return (
     <div className="min-h-screen bg-[#f1f4f0] flex flex-col items-center justify-center p-4 font-sans text-gray-800">
       {/* Header Section */}
@@ -14,12 +37,13 @@ const SignUpPage = () => {
       </div>
 
       <div className="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={onSubmit}>
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-1">
               নাম
             </label>
             <input
+              name="name"
               type="text"
               placeholder="যেমন: রহিম উদ্দিন"
               className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all placeholder-gray-400"
@@ -32,6 +56,7 @@ const SignUpPage = () => {
               ইমেইল
             </label>
             <input
+              name="email"
               type="email"
               placeholder="you@example.com"
               className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all placeholder-gray-400"
@@ -44,6 +69,7 @@ const SignUpPage = () => {
               পাসওয়ার্ড
             </label>
             <input
+              name="password"
               type="password"
               placeholder="কমপক্ষে ৮ অক্ষর"
               className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all placeholder-gray-400"
@@ -56,6 +82,7 @@ const SignUpPage = () => {
               পাসওয়ার্ড নিশ্চিত করুন
             </label>
             <input
+              name="password1"
               type="password"
               placeholder="আবার লিখুন"
               className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all placeholder-gray-400"

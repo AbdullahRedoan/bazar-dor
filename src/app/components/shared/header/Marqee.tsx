@@ -1,4 +1,5 @@
 import { IProduct } from "@/app/types/types";
+import Link from "next/link";
 import { FiTriangle } from "react-icons/fi";
 import MarqueeText from "react-marquee-text";
 // import "MarqueeText/styles.css"
@@ -22,8 +23,8 @@ const Marqee = async () => {
           const isUp = product.change.dir === "up";
 
           return (
-            <div
-              key={product.id}
+            <Link key={product.id} href={`/products/${product.id}`}>
+              <div
               className="flex items-center gap-2.5 px-6 whitespace-nowrap first:pl-0 last:pr-0 mx-5"
             >
               {/* Category/Product Icon */}
@@ -53,6 +54,7 @@ const Marqee = async () => {
                 <span>{product?.change.pct.toLocaleString('bn-BD')}%</span>
               </div>
             </div>
+            </Link>
           );
         })}
       </MarqueeText>
