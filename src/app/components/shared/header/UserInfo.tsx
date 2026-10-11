@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { HiChevronDown } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 const UserInfo = () => {
   const { data: session } = authClient.useSession();
@@ -12,6 +13,7 @@ const UserInfo = () => {
 
   const handleSignOut = async () => {
     await authClient.signOut();
+    toast.success('Signed Out')
   };
 
   return (
