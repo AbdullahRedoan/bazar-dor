@@ -91,13 +91,13 @@ const UserInfo = () => {
       ) : (
         <div className="flex items-center gap-4">
           <Link href={"/signIn"}>
-            <button className="text-sm font-semibold text-gray-800 hover:text-emerald-700 transition-colors px-2 py-1">
+            <button className="cursor-pointer  text-sm font-semibold text-gray-800 hover:text-emerald-700 transition-colors px-2 py-1">
               সাইন ইন
             </button>
           </Link>
 
           <Link href={"/signUp"}>
-            <button className="bg-[#008a45] hover:bg-[#00783c] text-white text-sm font-medium px-5 py-2.5 rounded-xl shadow-md transition-all">
+            <button className="cursor-pointer bg-[#008a45] hover:bg-[#00783c] text-white text-sm font-medium px-5 py-2.5 rounded-xl shadow-md transition-all">
               সাইন আপ
             </button>
           </Link>

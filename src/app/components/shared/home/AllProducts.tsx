@@ -2,6 +2,7 @@ import { IProduct } from "@/app/types/types";
 import ProductCard from "../../../products/ProductCard";
 
 const AllProducts = ({ products }: { products: IProduct[] }) => {
+
   return (
     <div id="products">
       <div className="my-5">

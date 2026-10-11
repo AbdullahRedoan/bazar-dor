@@ -28,7 +28,7 @@ const Marqee = async () => {
 
           return (
             <Link key={product?.id} href={`/products/${product?.id}`}>
-              <div className="flex items-center gap-2.5 px-6 whitespace-nowrap first:pl-0 last:pr-0 mx-5">
+              <div className=" cursor-pointer flex items-center gap-2.5 px-6 whitespace-nowrap first:pl-0 last:pr-0 mx-5">
                 {/* Category/Product Icon */}
                 <div className="w-7 h-7 rounded-full bg-gray-200/70 flex items-center justify-center text-sm shrink-0 shadow-inner">
                   {product?.image || product?.categoryIcon}

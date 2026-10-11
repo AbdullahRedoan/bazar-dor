@@ -3,23 +3,23 @@ import React, { createContext, useState } from 'react';
 
 
 interface IProductContext {
-    activeButton: string;
-    setActiveButton: React.Dispatch<React.SetStateAction<string>>
+    sortBy: string;
+    setSortBy: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const ProductContext = createContext<IProductContext>({
-    activeButton: "today",
-    setActiveButton: () => {},
+    sortBy: "desc",
+    setSortBy: () => {},
 });
 
 
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
 
-    const [activeButton, setActiveButton] = useState<string>("");
+    const [sortBy, setSortBy] = useState<string>("");
 
     const sharedData = {
-        activeButton,
-        setActiveButton
+        sortBy,
+        setSortBy
     }
 
     return <ProductContext.Provider value={sharedData}>

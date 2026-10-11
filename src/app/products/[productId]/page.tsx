@@ -40,14 +40,13 @@ const ProductDetailPage = async ({
             হোম
           </Link>
           <span>&gt;</span>
-          <a href="#" className="hover:underline">
+          <Link href={`/products?category=${product?.category}`} className="hover:underline">
             {product?.categoryNameBn}
-          </a>
+          </Link>
           <span>&gt;</span>
           <span className="text-gray-700">{product?.nameBn}</span>
         </nav>
 
-        {/* 2. Top Header Product Card */}
         <div className="bg-[#f8faf8] border border-gray-100 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Left Side: Image, Title & Subtitles */}
           <div className="flex items-center gap-4">

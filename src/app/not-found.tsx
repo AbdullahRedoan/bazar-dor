@@ -29,7 +29,7 @@ export default function NotFound() {
         <div className="pt-2">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#008744] hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition duration-200"
+            className="cursor-pointer inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#008744] hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition duration-200"
           >
             <span>🏠</span>
             <span>হোম পেজে ফিরে যান</span>

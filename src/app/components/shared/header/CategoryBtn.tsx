@@ -10,7 +10,7 @@ const CategoryBtn = ({category}:{category : ICategory}) => {
     const isActive = currentCategoryParam === category.slug;
   return (
     <Link
-      className={`text-black font-semibold text-md ${
+      className={`text-black font-semibold text-md cursor-pointer  ${
               isActive
                 ? 'bg-[#008a45] text-white shadow-sm py-1 px-2 rounded-2xl'
                 : ' hover:text-emerald-700 hover:bg-slate-100'

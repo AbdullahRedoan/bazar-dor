@@ -90,7 +90,7 @@ const SignInPage = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#008a45] hover:bg-[#00783c] text-white font-medium py-3 rounded-lg shadow-sm transition-colors text-sm mt-2"
+            className="w-full bg-[#008a45] hover:bg-[#00783c] text-white font-medium py-3 rounded-lg shadow-sm transition-colors text-sm mt-2 cursor-pointer "
           >
             সাইন ইন
           </button>
@@ -112,7 +112,7 @@ const SignInPage = () => {
           <button
             onClick={handleGoogleSignIn}
             type="button"
-            className="flex items-center justify-center gap-2 py-1 pl-2  border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-100/80 transition-colors text-xs font-semibold text-gray-800"
+            className=" cursor-pointer flex items-center justify-center gap-2 py-1 pl-2  border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-100/80 transition-colors text-xs font-semibold text-gray-800"
           >
            <FaGoogle className="w-5 h-5"/> 
             Google দিয়ে চালিয়ে যান
@@ -122,7 +122,7 @@ const SignInPage = () => {
           <button 
           onClick={handleGithubSignIn}
             type="button"
-            className="flex items-center justify-center gap-2 py-2 pl-1 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-100/80 transition-colors text-xs font-semibold text-gray-800"
+            className=" cursor-pointer flex items-center justify-center gap-2 py-2 pl-1 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-100/80 transition-colors text-xs font-semibold text-gray-800"
           >
             <FaGithub className="w-6 h-6"/>
 
@@ -133,7 +133,7 @@ const SignInPage = () => {
         {/* Footer Link */}
         <div className="mt-6 text-center text-xs text-gray-600">
           অ্যাকাউন্ট নেই?{" "}
-          <Link href="/signUp" className="text-emerald-600 font-medium hover:underline">
+          <Link href="/signUp" className="cursor-pointer text-emerald-600 font-medium hover:underline">
             সাইন আপ করুন
           </Link>
         </div>
@@ -141,9 +141,9 @@ const SignInPage = () => {
 
       {/* Back Link */}
       <div className="mt-6 text-center">
-        <a href="#" className="text-xs text-gray-500 hover:text-gray-700">
+        <Link href="/" className="text-xs text-gray-500 hover:text-gray-700">
           ← হোম পেজে ফিরে যান
-        </a>
+        </Link>
       </div>
     </div>
   );

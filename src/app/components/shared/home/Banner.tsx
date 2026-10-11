@@ -34,7 +34,7 @@ const Banner = () => {
           <div className="pt-2">
             <Link
             href='#products'
-            ><button className="bg-[#008a45] hover:bg-[#00783c] text-white font-medium text-xs sm:text-sm px-5 py-2.5 rounded-lg shadow-sm transition-colors">
+            ><button className=" cursor-pointer bg-[#008a45] hover:bg-[#00783c] text-white font-medium text-xs sm:text-sm px-5 py-2.5 rounded-lg shadow-sm transition-colors">
               সব পণ্য দেখুন
             </button></Link>
           </div>
