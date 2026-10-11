@@ -27,20 +27,28 @@ const SignInPage = () => {
   };
 
   const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+    toast.promise(
+    authClient.signIn.social({
       provider: "google",
-    });
-    if(data){
-      toast.success('Sign In Successfull!')
+      callbackURL: "/"
+    }),
+    {
+      success: 'গুগল অ্যাকাউন্টে রিডাইরেক্ট করা হচ্ছে!',
+      error: 'গুগল সাইন ইন ব্যর্থ হয়েছে!',
     }
+  );
   };
   const handleGithubSignIn = async () => {
-    const data = await authClient.signIn.social({
+    toast.promise(
+    authClient.signIn.social({
       provider: "github",
-    });
-    if(data){
-      toast.success('Sign In Successfull!')
+      callbackURL: "/"
+    }),
+    {
+      success: 'গিটহাব অ্যাকাউন্টে রিডাইরেক্ট করা হচ্ছে!',
+      error: 'গিটহাব সাইন ইন ব্যর্থ হয়েছে!',
     }
+  );
   };
 
   return (
@@ -52,7 +60,7 @@ const SignInPage = () => {
           বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
         </p>
       </div>
-      <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-100 p-8">
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-1">
