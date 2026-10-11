@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
 
@@ -15,11 +16,11 @@ const SignUpPage = () => {
       callbackURL: '/signIn'
     })
     if(data){
-      console.log(data)
-      redirect('/signIn')
+      toast("Sign Up Successfull!");
+      redirect('/')
     }
     if(error){
-      console.log(error)
+      toast(error?.message);
     }
 
   }

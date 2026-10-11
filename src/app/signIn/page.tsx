@@ -1,8 +1,32 @@
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const SignInPage = () => {
+  const onSubmit = async(e: React.SubmitEvent<HTMLElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const user = Object.fromEntries(formData.entries()) as {
+      email: string;
+      password: string;
+    };
+
+    const { data, error } = await authClient.signIn.email({
+      ...user,
+      callbackURL: "/",
+    });
+    if (data) {
+      toast("Sign In Successfull!");
+    }
+    if (error) {
+      toast(error?.message);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#f1f4f0] flex flex-col items-center justify-center p-4 font-sans text-gray-800">
+    <div className="min-h-80 bg-[#f1f4f0] flex flex-col items-center justify-center p-4 font-sans text-gray-800">
       {/* Header Section */}
       <div className="text-center mb-6">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">সাইন ইন</h1>
@@ -10,16 +34,14 @@ const SignInPage = () => {
           বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্টে ঢুকুন।
         </p>
       </div>
-
-      {/* Main Card Container */}
-      <div className="w-full max-w-md bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-        <form className="space-y-4" >
-          {/* Email Field */}
+      <div className="w-full max-w-sm bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+        <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-semibold text-gray-800 mb-1">
               ইমেইল
             </label>
             <input
+              name="email"
               type="email"
               placeholder="you@example.com"
               className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all placeholder-gray-400"
@@ -32,6 +54,7 @@ const SignInPage = () => {
               পাসওয়ার্ড
             </label>
             <input
+              name="password"
               type="password"
               placeholder="কমপক্ষে ৮ অক্ষর"
               className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all placeholder-gray-400"
