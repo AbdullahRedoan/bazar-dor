@@ -1,4 +1,3 @@
-import NotFound from "@/app/not-found";
 import { IProduct } from "@/app/types/types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -27,7 +26,7 @@ const ProductDetailPage = async ({
 
   const isUp = product?.change?.dir === "up";
   if(!product){
-    return <NotFound></NotFound>
+    return notFound();
   }else{
     return (
     <div className="min-h-screen bg-[#f1f4f0] p-4 sm:p-8 font-sans text-gray-800 flex flex-col items-center">
@@ -56,19 +55,19 @@ const ProductDetailPage = async ({
                 {product?.nameBn}
               </h1>
               <p className="text-xs text-gray-500 mt-1">
-                প্রতি {formatUnit(product?.unit)}
+                প্রতি {formatUnit(product?.unit)} ㆍ {product?.categoryNameBn}
               </p>
               <div className="text-xs text-gray-600 mt-1">
                 গতকালকের তুলনায় আজ দাম{" "}
                 <span className="font-bold text-gray-900">
                   {isUp ? (
-                    <div>
-                      বেড়েছে{" "}
+                    <span>
+                      বেড়েছে{" "}ㆍ 
                       {(product?.today - product?.yesterday)?.toLocaleString(
                         "bn-BN",
                       )}
                       টাকা
-                    </div>
+                    </span>
                   ) : (
                     <div>
                       কমেছে{" "}

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { IProduct } from "../types/types";
 import CategoryProducts from "./CategoryProducts";
 
@@ -11,7 +12,9 @@ const CategoryDetails = async ({
     `${process.env.API_BASE_URL}/products?category=${category}`,
   );
   const products: IProduct[] = await res.json();
-
+  if(!products || products?.length === 0){
+    return notFound();
+  }
 
   return (
     <div className="max-w-7xl mx-auto my-10">

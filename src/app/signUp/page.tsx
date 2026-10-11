@@ -48,7 +48,7 @@ const SignUpPage = () => {
     });
     if (data) {
       toast("Sign Up Successfull!");
-      redirect("/");
+      redirect("/signIn");
     }
     if (error) {
       toast(error?.message);

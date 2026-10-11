@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { auth } from "./lib/auth";
+import { toast } from "react-toastify";
 
 // This function can be marked `async` if using `await` inside
 export async function proxy(request: NextRequest) {
