@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "./ProductCard";
 import { IProduct } from "../types/types";
 
 const CategoryDetails = async ({
@@ -31,7 +31,10 @@ const CategoryDetails = async ({
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-4 w-full justify-end">
             সাজান{" "}
-            <select defaultValue="Pick a color" className="select w-1/12 rounded-xl">
+            <select
+              defaultValue="Pick a color"
+              className="select w-1/12 rounded-xl"
+            >
               <option>ডিফল্ট</option>
               <option>দাম: কম থেকে বেশি</option>
               <option>দাম: বেশি থেকে কম</option>
