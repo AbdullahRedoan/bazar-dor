@@ -8,7 +8,6 @@ const CategoryBtn = ({category}:{category : ICategory}) => {
     const searchParams = useSearchParams()
     const currentCategoryParam = searchParams.get('category');
     const isActive = currentCategoryParam === category.slug;
-    console.log(searchParams, isActive, category.slug, currentCategoryParam);
   return (
     <Link
       className={`text-black font-semibold text-md ${

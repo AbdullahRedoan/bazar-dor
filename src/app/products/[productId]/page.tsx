@@ -1,13 +1,15 @@
+import NotFound from "@/app/not-found";
 import { IProduct } from "@/app/types/types";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { FiTriangle } from "react-icons/fi";
 import { TbTriangleInverted } from "react-icons/tb";
 
 const formatUnit = (unit: string) => {
-  if (unit.toLowerCase() === "kg") return "কেজি";
-  if (unit.toLowerCase() === "litre") return "লিটার";
-  if (unit.toLowerCase() === "dozen") return "ডজন";
-  if (unit.toLowerCase() === "piece") return "পিস";
+  if (unit?.toLowerCase() === "kg") return "কেজি";
+  if (unit?.toLowerCase() === "litre") return "লিটার";
+  if (unit?.toLowerCase() === "dozen") return "ডজন";
+  if (unit?.toLowerCase() === "piece") return "পিস";
   return unit;
 };
 const ProductDetailPage = async ({
@@ -18,23 +20,31 @@ const ProductDetailPage = async ({
   const { productId } = await params;
   const res = await fetch(`${process.env.API_BASE_URL}/products/${productId}`);
   const product: IProduct = await res.json();
-  console.log(product);
-  const isUp = product?.change.dir === "up";
 
-  return (
+  if (!product || !product.id) {
+    notFound();
+  }
+
+  const isUp = product?.change?.dir === "up";
+
+  console.log(product);
+  if(!product){
+    return <NotFound></NotFound>
+  }else{
+    return (
     <div className="min-h-screen bg-[#f1f4f0] p-4 sm:p-8 font-sans text-gray-800 flex flex-col items-center">
       <div className="w-full max-w-7xl space-y-6">
-        {/* 1. Breadcrumbs */}
+
         <nav className="text-xs text-gray-500 flex items-center gap-2">
           <Link href="/" className="hover:underline">
             হোম
           </Link>
           <span>&gt;</span>
           <a href="#" className="hover:underline">
-            {product.categoryNameBn}
+            {product?.categoryNameBn}
           </a>
           <span>&gt;</span>
-          <span className="text-gray-700">{product.nameBn}</span>
+          <span className="text-gray-700">{product?.nameBn}</span>
         </nav>
 
         {/* 2. Top Header Product Card */}
@@ -42,20 +52,22 @@ const ProductDetailPage = async ({
           {/* Left Side: Image, Title & Subtitles */}
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-2xl bg-gray-100/80 flex items-center justify-center text-3xl shadow-inner border border-gray-200/50 shrink-0">
-              {product.image}
+              {product?.image}
             </div>
             <div>
               <h1 className="text-2xl font-black text-gray-900 leading-tight">
-                {product.nameBn}
+                {product?.nameBn}
               </h1>
-              <p className="text-xs text-gray-500 mt-1">প্রতি {formatUnit(product.unit)}</p>
+              <p className="text-xs text-gray-500 mt-1">
+                প্রতি {formatUnit(product?.unit)}
+              </p>
               <div className="text-xs text-gray-600 mt-1">
                 গতকালকের তুলনায় আজ দাম{" "}
                 <span className="font-bold text-gray-900">
                   {isUp ? (
                     <div>
                       বেড়েছে{" "}
-                      {(product.today - product.yesterday).toLocaleString(
+                      {(product?.today - product?.yesterday)?.toLocaleString(
                         "bn-BN",
                       )}
                       টাকা
@@ -63,7 +75,7 @@ const ProductDetailPage = async ({
                   ) : (
                     <div>
                       কমেছে{" "}
-                      {(product.yesterday - product.today).toLocaleString(
+                      {(product?.yesterday - product?.today).toLocaleString(
                         "bn-BN",
                       )}
                       টাকা
@@ -80,10 +92,10 @@ const ProductDetailPage = async ({
               আজকের দাম
             </span>
             <div className="text-2xl font-black text-gray-900 leading-tight">
-              {product.today.toLocaleString("bn-BN")}
+              {product?.today?.toLocaleString("bn-BN")}
             </div>
             <span className="text-[11px] text-gray-500 block mt-0.5">
-              টাকা / {formatUnit(product.unit)}
+              টাকা / {formatUnit(product?.unit)}
             </span>
             <div className="flex items-center justify-center gap-1 text-xs font-bold text-red-500 mt-1">
               <span>
@@ -95,7 +107,7 @@ const ProductDetailPage = async ({
                 ) : (
                   <div className="flex items-center gap-1 bg-[#f0f0f0] text-success px-2.5 py-1 rounded-full text-xs font-bold">
                     <TbTriangleInverted className="w-2.5 h-2.5 fill-current" />
-                    <span>{product?.change.pct.toLocaleString("bn-BN")}%</span>
+                    <span>{product?.change?.pct?.toLocaleString("bn-BN")}%</span>
                   </div>
                 )}
               </span>
@@ -119,7 +131,7 @@ const ProductDetailPage = async ({
                 <div className="text-xl font-bold text-emerald-600">
                   {
                     <span className="font-bold text-3xl">
-                      {Math.min(
+                      {Math?.min(
                         ...product?.markets?.map((m) => m.min),
                       ).toLocaleString("bn-BN")}
                       <span className="text-sm"> টাকা</span>
@@ -165,7 +177,7 @@ const ProductDetailPage = async ({
                   </span>
                 </div>
                 <span className="text-[11px] text-gray-400 block">
-                  প্রতি {formatUnit(product.unit)}-এর হিসাবে
+                  প্রতি {formatUnit(product?.unit)}-এর হিসাবে
                 </span>
               </div>
             </div>
@@ -192,28 +204,26 @@ const ProductDetailPage = async ({
                   {product?.markets?.map((row, index) => {
                     const avg = Math.floor((row.min + row.max) / 2);
                     return (
-                      
-                        <tr
-                          key={index}
-                          className="hover:bg-gray-100/50 transition-colors border-b-gray-600 "
-                        >
-                          <td className="py-3.5 px-4 font-bold text-gray-900">
-                            {row.market}
-                          </td>
-                          <td className="py-3.5 px-4 text-gray-600">
-                            {row.division}
-                          </td>
-                          <td className="py-3.5 px-4 text-gray-700">
-                            {row.min.toLocaleString("bn-BN")} টাকা
-                          </td>
-                          <td className="py-3.5 px-4 text-gray-700">
-                            {row.max.toLocaleString("bn-BN")} টাকা
-                          </td>
-                          <td className="py-3.5 px-4 font-bold text-gray-900 text-right">
-                            {avg.toLocaleString("bn-BN")} টাকা
-                          </td>
-                        </tr>
-                      
+                      <tr
+                        key={index}
+                        className="hover:bg-gray-100/50 transition-colors border-b-gray-600 "
+                      >
+                        <td className="py-3.5 px-4 font-bold text-gray-900">
+                          {row.market}
+                        </td>
+                        <td className="py-3.5 px-4 text-gray-600">
+                          {row.division}
+                        </td>
+                        <td className="py-3.5 px-4 text-gray-700">
+                          {row.min.toLocaleString("bn-BN")} টাকা
+                        </td>
+                        <td className="py-3.5 px-4 text-gray-700">
+                          {row.max.toLocaleString("bn-BN")} টাকা
+                        </td>
+                        <td className="py-3.5 px-4 font-bold text-gray-900 text-right">
+                          {avg.toLocaleString("bn-BN")} টাকা
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -224,6 +234,9 @@ const ProductDetailPage = async ({
       </div>
     </div>
   );
+  }
+
+  
 };
 
 export default ProductDetailPage;
