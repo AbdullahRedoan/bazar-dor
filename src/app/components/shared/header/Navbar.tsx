@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FiShoppingCart } from "react-icons/fi";
+import UserInfo from "./UserInfo";
 const Navbar = () => {
 
   const date = new Date().toLocaleDateString('bn-BN', { dateStyle: 'full' })
@@ -24,23 +25,7 @@ const Navbar = () => {
           </div>
         </div>
         </Link>
-
-        {/* Action Buttons */}
-        <div className="flex items-center gap-4">
-          {/* Sign In Button */}
-          <Link href={"/signIn"}>
-            <button className="text-sm font-semibold text-gray-800 hover:text-emerald-700 transition-colors px-2 py-1">
-              সাইন ইন
-            </button>
-          </Link>
-
-          {/* Sign Up Button */}
-          <Link href={"/signUp"}>
-            <button className="bg-[#008a45] hover:bg-[#00783c] text-white text-sm font-medium px-5 py-2.5 rounded-xl shadow-md transition-all">
-              সাইন আপ
-            </button>
-          </Link>
-        </div>
+      <UserInfo></UserInfo>
       </div>
       <div></div>
     </header>
