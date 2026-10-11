@@ -19,7 +19,7 @@ const Categories = async () => {
 
           {categories.map((category: ICategory) => {
             return (
-              <option key={category.id}>
+              <option value='' key={category.id}>
                 <CategoryBtn category={category}></CategoryBtn>
               </option>
             );

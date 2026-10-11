@@ -14,8 +14,9 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   };
 
   const isUp = product?.change?.dir === "up";
+  const isDown = product?.change?.dir === "down";
 
-  if(!product){
+  if (!product) {
     return;
   }
   return (
@@ -46,18 +47,18 @@ const ProductCard = ({ product }: { product: IProduct }) => {
               <span className="text-sm font-semibold">টাকা</span>
             </div>
           </div>
-
-          {isUp ? (
-            <div className="flex items-center gap-1 bg-[#f0f0f0] text-[#d9383a] px-2.5 py-1 rounded-full text-xs font-bold">
+          <div
+            className={`flex items-center gap-1 bg-[#f0f0f0]  px-2.5 py-1 rounded-full text-xs font-bold ${isUp ? "text-[#d9383a]" : isDown ? "text-success" : "text-gray-500"}`}
+          >
+            {isUp ? (
               <FiTriangle className="w-2.5 h-2.5 fill-current" />
-              <span>{product?.change.pct.toLocaleString("bn-BN")}%</span>
-            </div>
-          ) : (
-            <div className="flex items-center gap-1 bg-[#f0f0f0] text-success px-2.5 py-1 rounded-full text-xs font-bold">
+            ) : isDown ? (
               <TbTriangleInverted className="w-2.5 h-2.5 fill-current" />
-              <span>{product?.change.pct.toLocaleString("bn-BN")}%</span>
-            </div>
-          )}
+            ) : (
+              <></>
+            )}
+            <span>{product?.change.pct.toLocaleString("bn-BN")}%</span>
+          </div>
         </div>
       </div>
     </Link>

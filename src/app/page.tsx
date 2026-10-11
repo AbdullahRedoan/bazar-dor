@@ -9,7 +9,6 @@ async function Home() {
     throw new Error(`API error! Status: ${res.status}`);
   }
   const products = await res.json();
-  console.log();
 
   return (
     <div>

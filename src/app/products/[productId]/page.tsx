@@ -26,8 +26,6 @@ const ProductDetailPage = async ({
   }
 
   const isUp = product?.change?.dir === "up";
-
-  console.log(product);
   if(!product){
     return <NotFound></NotFound>
   }else{
