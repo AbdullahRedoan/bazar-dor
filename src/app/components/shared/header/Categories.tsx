@@ -9,7 +9,7 @@ const Categories = async () => {
       <span className=" max-w-7xl mx-auto flex justify-start gap-10 py-2">
         {categories.map((category: ICategory) => {
           return (
-            <Link className="text-black" href={category.slug} key={category.id}>
+            <Link className="text-black" href={`/products?category=${category.slug}`} key={category.id}>
               <>
                 <span>{category.icon}</span>
               </>
