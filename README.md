@@ -58,7 +58,7 @@
     │   │   │   ├── header/ # Navbar, Categories, Marquee, UserInfo
     │   │   │   └── footer.tsx
     │   │   └── home/       # Homepage modular sections (Banner, Risen/Fallen Products)
-    │   ├── products/       # Products listing & dynamic detail routes ([productId])
+    │   ├── products/       # Products listing & dynamic detail routes ([slug])
     │   ├── profile/        # User profile view
     │   ├── signIn/         # Login page
     │   ├── signUp/         # Registration page
@@ -73,7 +73,7 @@
 
 
 
-    
+
 ## 🚀 Getting Started
 
 Follow these instructions to set up and run the project locally on your machine.
